@@ -6,3 +6,4 @@ seaborn
 bokeh
 streamlit_bokeh_events
 pyperclip
+cryptography
