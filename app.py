@@ -64,4 +64,4 @@ def verify_transaction(transaction_data, signature, public_key):
     except Exception as e:
         return False
 
-st.write(generate_keys()[0])
+st.write(generate_keys()[1])
