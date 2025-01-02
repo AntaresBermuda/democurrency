@@ -17,7 +17,7 @@ st.set_page_config(
 st.title("Welcome to the Home Page")
 st.write("This is the main page of the app. Use the sidebar to navigate.")
 
-def generate_keypair() -> Tuple[str, str]:
+def generate_keypair():
     k = keys.PrivateKey(get_valid_secret())
     return k.to_hex(), k.public_key.to_hex()
 
