@@ -16,8 +16,7 @@ st.set_page_config(
     layout="wide",
 )
 
-st.title("Welcome to the Home Page")
-st.write("This is the main page of the app. Use the sidebar to navigate.")
+st.title("Democurrency")
 
 def generate_keypair():
     k = keys.PrivateKey(get_valid_secret())
