@@ -8,6 +8,7 @@ import seaborn as sns
 from dateutil.relativedelta import relativedelta
 import time
 from coincurve.utils import get_valid_secret
+from eth_keys import keys
 
 st.set_page_config(
     page_title="My Streamlit App",
