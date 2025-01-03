@@ -22,8 +22,8 @@ def generate_keypair():
     k = keys.PrivateKey(get_valid_secret())
     return k.to_hex(), k.public_key.to_hex()
 
+st.write(generate_keypair()[0])
 st.write(generate_keypair()[1])
-
 
 
 
