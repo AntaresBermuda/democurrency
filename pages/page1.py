@@ -20,20 +20,14 @@ href = f'<a href="data:file/csv;base64,{b64}" download="{file_name}">Download CS
 st.markdown(href, unsafe_allow_html=True)
 
 
-
 # Save the CSV to a temporary file
 temp_file_path = 'temp_ledger.csv'
 with open(temp_file_path, 'w') as f:
     f.write(csv)
 
-# Create the download button
-with open(temp_file_path, "rb") as file:
-    st.download_button(
-        label="Download Ledger CSV",
-        data=file,
-        file_name="ledger.csv",
-        mime="text/csv",
-    )
+# Provide the download link
+href = f'<a href="files/{temp_file_path}" download>Click here to download the ledger</a>'
+st.markdown(href, unsafe_allow_html=True)
 
-# Remove the temporary file after download
+# Optionally, clean up the temporary file after a while (if needed)
 os.remove(temp_file_path)
