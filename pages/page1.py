@@ -21,4 +21,4 @@ st.markdown("#### CSV Content (Raw)")
 st.text(csv)
 
 # Optionally save it as a downloadable link
-st.markdown("#### [Download CSV File](data:text/csv;base64,{})".format(csv_data.encode("utf-8").decode("latin-1")), unsafe_allow_html=True)
+st.markdown("#### [Download CSV File](data:text/csv;base64,{})".format(csv.encode("utf-8").decode("latin-1")), unsafe_allow_html=True)
