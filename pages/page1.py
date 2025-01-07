@@ -12,14 +12,13 @@ st.dataframe(ledger.style.set_properties(**{'max-width': '2px'}))
 csv = ledger.to_csv(index=False)
 
 
-# Save the CSV to a temporary file
-temp_file_path = 'temp_ledger.csv'
-with open(temp_file_path, 'w') as f:
-    f.write(csv)
+st.title("CSV Data API")
+st.markdown("### Access CSV Data Programmatically")
+st.code("import requests\nresponse = requests.get('http://democurrency.streamlit.app/data.csv')\ndata = response.text", language="python")
 
-# Provide the download link
-href = f'<a href="files/{temp_file_path}" download>Click here to download the ledger</a>'
-st.markdown(href, unsafe_allow_html=True)
+# Serve the CSV content
+st.markdown("#### CSV Content (Raw)")
+st.text(csv_data)
 
-# Optionally, clean up the temporary file after a while (if needed)
-os.remove(temp_file_path)
+# Optionally save it as a downloadable link
+st.markdown("#### [Download CSV File](data:text/csv;base64,{})".format(csv_data.encode("utf-8").decode("latin-1")), unsafe_allow_html=True)
