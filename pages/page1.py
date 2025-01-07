@@ -30,5 +30,5 @@ ledger.to_csv("static/shared_data.csv", index=False)
 
 # Generate the file link
 st.title("Shared CSV Data")
-file_link = "http://your-app-url/static/shared_data.csv"
+file_link = "http://democurrency.streamlit.app/static/shared_data.csv"
 st.markdown(f"### Download Link: [Shared Data CSV]({file_link})")
