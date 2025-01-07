@@ -6,4 +6,7 @@ st.title("The ledger")
 ledger = pd.read_csv("ledger.csv")
 
 st.dataframe(ledger)
-st.write(ledger.shape)
+
+st.dataframe(df.style.set_properties(**{'max-width': '200px'}))
+st.dataframe(df.style.set_properties(**{'min-width': '200px'}))
+
