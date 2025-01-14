@@ -11,6 +11,7 @@ df = pd.read_csv("ledger.csv")
 query_params = st.experimental_get_query_params()
 download_requested = query_params.get("download", ["false"])[0].lower() == "true"
 
+'''
 if download_requested:
     # Convert DataFrame to CSV
     csv_buffer = io.StringIO()
@@ -25,3 +26,4 @@ else:
     st.write("To request the DataFrame, add `?download=true` to the URL.")
     st.write("Here is the DataFrame preview:")
     st.dataframe(df)
+'''
