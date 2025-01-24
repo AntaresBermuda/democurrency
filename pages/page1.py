@@ -21,9 +21,8 @@ st.markdown(get_clickable_download_link(df), unsafe_allow_html=True)
 
 # Provide the Python code for programmatic download
 download_url = get_clickable_download_link(df).split('"')[1]  # Extract the `href` value
-st.code(f"""
-url = "{download_url}"
-""", language="python")
+
+st.write("URL:")
 
 st.write({download_url})
 
