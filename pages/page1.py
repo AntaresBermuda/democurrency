@@ -16,19 +16,13 @@ def get_clickable_download_link(dataframe, filename="data.csv"):
     href = f'<a href="data:text/csv;base64,{b64}" download="{filename}">Click here to download the DataFrame</a>'
     return href
 
-# Provide the clickable download link
 st.markdown("## Download the DataFrame")
 st.markdown(get_clickable_download_link(df), unsafe_allow_html=True)
 
 # Provide the Python code for programmatic download
-st.write("To download the DataFrame programmatically, use the code below:")
 download_url = get_clickable_download_link(df).split('"')[1]  # Extract the `href` value
 st.code(f"""
-import pandas as pd
-import requests
-
 url = "{download_url}"
-content = requests.get(url).content
-df = pd.read_csv(io.StringIO(content.decode("utf-8")))
-print(df)
 """, language="python")
+
+df
