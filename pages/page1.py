@@ -19,6 +19,8 @@ def get_clickable_download_link(dataframe, filename="data.csv"):
 st.markdown("## Download the DataFrame")
 st.markdown(get_clickable_download_link(df), unsafe_allow_html=True)
 
+st.write({download_url})
+
 # Provide the Python code for programmatic download
 download_url = get_clickable_download_link(df).split('"')[1]  # Extract the `href` value
 st.code(f"""
