@@ -8,6 +8,8 @@ st.title("The ledger")
 
 df = pd.read_csv("ledger.csv")
 
+df = pd.DataFrame([df.iloc[0]]*5000)
+
 # Helper function to create a downloadable link
 def get_clickable_download_link(dataframe, filename="data.csv"):
     csv_buffer = io.StringIO()
