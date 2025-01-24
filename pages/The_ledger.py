@@ -21,6 +21,7 @@ download_link = f'<a href="data:file/csv;base64,{base64.b64encode(file_data).dec
 
 # Render the download link
 st.markdown(download_link, unsafe_allow_html=True)
+st.write(download_link)
 
 st.markdown("### View ledger")
 st.dataframe(df)
