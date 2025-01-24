@@ -9,3 +9,4 @@ pyperclip
 cryptography
 coincurve
 eth_keys
+fastapi
