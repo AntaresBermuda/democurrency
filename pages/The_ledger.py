@@ -1,28 +1,35 @@
 import streamlit as st
 import pandas as pd
-import base64  # Import base64 for encoding the file data
 import os
 
 st.title("The ledger")
 
-# Read the ledger CSV
 df = pd.read_csv("ledger.csv")
-df = pd.DataFrame([df.iloc[0]]*10)
 
-# Save the CSV to a static file
-static_file_path = "static_ledger.csv"
+# Save the file to a known location in the Streamlit app directory
+STATIC_DIR = "static"
+if not os.path.exists(STATIC_DIR):
+    os.makedirs(STATIC_DIR)
+    
+# Save the CSV to the static directory
+static_file_path = os.path.join(STATIC_DIR, "ledger.csv")
 df.to_csv(static_file_path, index=False)
 
-# Serve the file with a proper MIME type
-with open(static_file_path, "rb") as file:
-    file_data = file.read()
+# Create a static download URL using Streamlit's file download component
+download_path = f"/app/{STATIC_DIR}/ledger.csv"  # This will be the static path
 
-# Create a downloadable link with a MIME type for CSV
-download_link = f'<a href="data:file/csv;base64,{base64.b64encode(file_data).decode()}" download="ledger.csv">Download ledger</a>'
+st.markdown(f"""
+### Download Options:
+1. Direct file path: `{download_path}`
+2. Using Python:
+```python
+import pandas as pd
+df = pd.read_csv('{download_path}')
+```
+""")
 
-# Render the download link
-st.markdown(download_link, unsafe_allow_html=True)
-st.write(download_link)
-
+# Display the data
 st.markdown("### View ledger")
 st.dataframe(df)
+
+print("Static file path created at: " + static_file_path)
