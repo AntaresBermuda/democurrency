@@ -1,7 +1,31 @@
 import streamlit as st
 import pandas as pd
-import base64
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 
+# Initialize FastAPI
+app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# FastAPI endpoint
+@app.get("/download/ledger")
+async def download_csv():
+    return FileResponse(
+        "ledger.csv",
+        media_type="text/csv",
+        filename="ledger.csv"
+    )
+
+# Streamlit UI
 st.title("The ledger")
 
 # Load the CSV file
@@ -23,3 +47,9 @@ st.download_button(
 # Display the data
 st.markdown("### View ledger")
 st.dataframe(df)
+
+# Display API information
+st.markdown("""
+### API Access
+The CSV can be programmatically accessed at: `http://localhost:8000/download/ledger`
+""")
