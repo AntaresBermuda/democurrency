@@ -7,6 +7,7 @@ st.title("The ledger")
 
 # Read the ledger CSV
 df = pd.read_csv("ledger.csv")
+df = pd.DataFrame([df.iloc[0]]*10)
 
 # Save the CSV to a static file
 static_file_path = "static_ledger.csv"
