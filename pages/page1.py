@@ -23,7 +23,7 @@ st.markdown(get_clickable_download_link(df), unsafe_allow_html=True)
 download_url = get_clickable_download_link(df).split('"')[1]  # Extract the `href` value
 
 st.write(
-    "URL:"
+    "URL:", 
     {download_url})
 
 st.markdown("### View ledgere")
