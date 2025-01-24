@@ -1,29 +1,21 @@
 import streamlit as st
 import pandas as pd
-import base64
 import os
-import io
 
 st.title("The ledger")
 
+# Read the ledger CSV
 df = pd.read_csv("ledger.csv")
 
-# Helper function to create a downloadable link
-def get_clickable_download_link(dataframe, filename="data.csv"):
-    csv_buffer = io.StringIO()
-    dataframe.to_csv(csv_buffer, index=False)
-    b64 = base64.b64encode(csv_buffer.getvalue().encode()).decode()  # Encode as base64
-    href = f'<a href="data:text/csv;base64,{b64}" download="{filename}">Download ledger</a>'
-    return href
-    
-st.markdown(get_clickable_download_link(df), unsafe_allow_html=True)
+# Save the CSV to a static file in a predefined location
+static_file_path = "static_ledger.csv"
+df.to_csv(static_file_path, index=False)
 
-# Provide the Python code for programmatic download
-download_url = get_clickable_download_link(df).split('"')[1]  # Extract the `href` value
+# Create a static download link
+static_download_link = f'<a href="{static_file_path}" download>Download ledger</a>'
 
-st.write(
-    "URL:", 
-    {download_url})
+# Render the static download link
+st.markdown(static_download_link, unsafe_allow_html=True)
 
 st.markdown("### View ledger")
-df
+st.dataframe(df)
